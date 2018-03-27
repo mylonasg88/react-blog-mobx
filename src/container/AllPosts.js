@@ -18,8 +18,14 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
     }
 
     async componentDidMount() {
+        console.log('looking for posts...');
         const blogStore = this.props.blogStore;
-        const p = await blogStore.fetchPosts();
+
+        // dont fetch posts every time
+        if (blogStore.posts.length < 1) {
+            const p = await blogStore.fetchPosts();
+        }
+
         const posts = blogStore.posts;
         // console.log(p[0].id);
         console.log(posts[0].id)
@@ -36,6 +42,7 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
 
     render() {
         const blogStore = this.props.blogStore;
+        console.log('Posts in array:', this.props.blogStore.posts.length);
         const blogList = blogStore.posts.map(post => <li key={post.id}><NavLink to={'/post/' + post.id} > {post.id} {post.title}</NavLink></li >)
         return (
             <div>
