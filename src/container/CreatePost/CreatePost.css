@@ -1,0 +1,15 @@
+.form {
+    padding: 10px;
+    border: 1px solid grey;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form-element {
+    padding: 10px;
+}
+
+.form-element textarea {
+    width: 200px;
+    height: 70px;
+}

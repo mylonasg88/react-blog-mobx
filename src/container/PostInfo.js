@@ -1,7 +1,9 @@
 // @flow
 import React from 'react'
+import { inject, observer } from 'mobx-react'
+import BlogStore from '../store/BlogStore';
 
-type Props = {
+type TypeProps = {
     post: {
         id: number,
         title: string,
@@ -10,14 +12,19 @@ type Props = {
 }
 
 // functional component example
-export default (props: Props) => {
+export default inject('blogStore')(observer((props: TypeProps) => {
+    console.log(props);
+    const id = props.match.params.id;
+    const post = props.blogStore.posts[id];
+    console.log(post);
     return (
         <div>
-            <h2>{props.post.title}</h2>
-            <p>{props.post.content}</p>
+            <h5>Post Info</h5>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
         </div>
     )
-}
+}))
 
 // class component example
 // export default class PostInfo extends React.Component<Props> {

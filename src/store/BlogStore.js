@@ -1,11 +1,12 @@
 // @flow
-import { observable, computed, action, runInAction } from 'mobx'
+import { observable, action, runInAction } from 'mobx'
 import dummyPosts from '../dummyData/posts'
 
 export default class BlogStore {
     @observable users: Array<*> = [];
     @observable posts: Array<*> = [];
     @observable loading: boolean = false;
+    @observable happened: string = "Nothing happened";
 
     @action
     async fetchPosts(): any {
@@ -16,6 +17,7 @@ export default class BlogStore {
             runInAction(() => {
                 this.loading = false;
                 this.posts = posts;
+                window.posts = this.posts;
             })
             console.log(this.posts[0].id);
             return posts;
@@ -30,7 +32,7 @@ export default class BlogStore {
 function fetchPostsFromAPI(): Array<*> {
     const url = "https://jsonplaceholder.typicode.com/posts";
     const url1 = '../dummyData/posts.js'
-    // return an array
+    // returns an array
     return dummyPosts;
     // returns a promise 
     // return fetch(url1).then((response) => response.json())
