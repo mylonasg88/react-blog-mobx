@@ -11,9 +11,9 @@ import { NavLink } from 'react-router-dom';
 // @inject('blogStore') @observer
 
 // This is what we would do in es5
-export default inject('blogStore')(observer(class AllPosts extends React.Component<*> {
+export default inject('blogStore')(observer(class AllPosts extends React.Component<*, { status: string }> {
     // export default (observer(class AllPosts extends React.Component<*> {
-    state: any = {
+    state = {
         status: "loading"
     }
 
@@ -43,7 +43,7 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
     render() {
         const blogStore = this.props.blogStore;
         console.log('Posts in array:', this.props.blogStore.posts.length);
-        const blogList = blogStore.posts.map(post => <li key={post.id}><NavLink to={'/post/' + post.id} > {post.id} {post.title}</NavLink></li >)
+        const blogList = blogStore.posts.map((post, i) => <li key={post.id}><NavLink to={{ pathname: '/post/' + post.id, pos: i }} > {post.id} {post.title}</NavLink></li >)
         return (
             <div>
                 <h2>All Posts :)</h2>

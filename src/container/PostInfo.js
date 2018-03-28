@@ -12,9 +12,9 @@ export type TypePost = {
 // functional component example
 export default inject('blogStore')(observer((props: TypePost) => {
     console.log(props);
-    const id = props.match.params.id;
+    // const id = props.match.params.id;
+    const id = props.location.pos;
     const post = props.blogStore.posts[id];
-    console.log(post);
     return (
         <div>
             <h5>Post Info</h5>
