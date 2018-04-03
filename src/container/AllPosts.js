@@ -24,11 +24,12 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
         // dont fetch posts every time
         if (blogStore.posts.length < 1) {
             const p = await blogStore.fetchPosts();
+            console.log('awaiting finished');
         }
 
         const posts = blogStore.posts;
         // console.log(p[0].id);
-        console.log(posts[0].id)
+        // console.log(posts[0].id)
         this.setState({
             status: "done loading"
         })

@@ -6,7 +6,11 @@ import BlogStore from '../store/BlogStore';
 export type TypePost = {
     id: number,
     title: string,
-    content: string
+    content: string,
+    history: Object,
+    location: Object,
+    match: Object,
+    blogStore: BlogStore
 }
 
 // functional component example
