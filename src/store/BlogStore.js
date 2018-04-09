@@ -25,10 +25,10 @@ export default class BlogStore {
         try {
             // if (this.posts.length > 0) return this.posts;
             const posts = await fetchPostsFromAPI();
-            // runInAction is a simple utility that takes an code block and 
-            //executes in an (anonymous) action. This is useful to create 
-            //and execute actions on the fly, for example inside an 
-            //asynchronous process. runInAction(f) is sugar for action(f)()
+            // runInAction is a simple utility that takes a code block and 
+            // executes in an (anonymous) action. This is useful to create 
+            // and execute actions on the fly, for example inside an 
+            // asynchronous process. runInAction(f) is sugar for action(f)()
             runInAction(() => {
                 this.loading = false;
                 this.posts = posts;
@@ -44,12 +44,17 @@ export default class BlogStore {
     }
 }
 
-function fetchPostsFromAPI(): Promise<*> {
+function fetchPostsFromAPI(): Array<*> {
     const url = "https://jsonplaceholder.typicode.com/posts";
     const url1 = '../dummyData/posts.js'
     // returns an array
     // return dummyPosts;
     // returns a promise 
-    return fetch(url).then((response) => response.json())
-        .then(data => data.splice(0, 10))
+    // return fetch(url).then((response) => response.json())
+    //     .then(data => data.splice(0, 10));
+
+    // Mock an API call
+    return new Promise((resolve, reject) => {
+        resolve([{ dummy: 'data' }]);
+    }).then(data => data);
 }

@@ -4,9 +4,14 @@ import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
 import './CreatePost.css';
 
+type TypeStateProps = {
+    redirect: number,
+    success: number
+}
+
 // This is a Container Component. Because it is updating data in the store.
 @inject('blogStore') @observer
-export default class CreatePost extends React.Component<*> {
+export default class CreatePost extends React.Component<TypeStateProps, *> {
 
     state = {
         redirect: false,
@@ -44,7 +49,7 @@ export default class CreatePost extends React.Component<*> {
             <div className="form">
                 {this.state.redirect ? <Redirect to="/posts" /> : null}
 
-                {this.state.success ? <SuccessPopup onClick={this.setRedirect} />: null}
+                {this.state.success ? <SuccessPopup onClick={this.setRedirect} /> : null}
                 <h3>Create New Post</h3>
                 <div className="form-element">
                     <label>Title: </label>
@@ -63,40 +68,13 @@ export default class CreatePost extends React.Component<*> {
 }
 
 const SuccessPopup = (props) => {
-    console.log(props.onClick);
     return (
-        <div style={styles.popupContainer}>
-            <div style={styles.popupOverlay}></div>
-            <div style={styles.popupContent}>
+        <div className="popupContainer">
+            <div className="popupOverlay"></div>
+            <div className="popupContent">
                 <h2>Post created successfully!</h2>
                 <button onClick={props.onClick}>OK</button>
             </div>
         </div>
     );
-}
-
-const styles = {
-    popupContainer: {
-        position: "absolute",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%"
-    },
-    popupOverlay: {
-        position: "absolute", 
-        backgroundColor: "grey", 
-        opacity: "0.5", 
-        top: "0", 
-        left: "0", 
-        width: "100%", 
-        height: "100%"
-    },
-    popupContent: {
-        position: "absolute", 
-        top: "250px", 
-        left: "30%",
-        backgroundColor: "white",
-        padding: "30px"
-    }
 }

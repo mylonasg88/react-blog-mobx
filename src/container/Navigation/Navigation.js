@@ -8,9 +8,9 @@ export default () => {
     return (
         <div className="navigation">
             <ul>
-                <li><NavLink to="/" activeClassName="selected">Home</NavLink></li>
-                <li><NavLink to="/posts" activeClassName="selected">All Posts</NavLink></li>
-                <li><NavLink to='/post/new' activeClassName="selected">New Post</NavLink></li>
+                <li><NavLink exact to="/" activeClassName="selected">Home</NavLink></li>
+                <li><NavLink exact to="/posts" activeClassName="selected">All Posts</NavLink></li>
+                <li><NavLink exact to='/post/new' activeClassName="selected">New Post</NavLink></li>
             </ul>
         </div>
     )
