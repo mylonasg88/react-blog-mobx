@@ -7,6 +7,7 @@ export default class BlogStore {
     @observable users: Array<*> = [];
     @observable posts: Array<*> = [];
     @observable loading: boolean = false;
+    @observable isLogging: boolean = false;
     @observable happened: string = "Nothing happened";
     @observable newPost: TypePost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
 
@@ -42,9 +43,34 @@ export default class BlogStore {
             })
         }
     }
+
+    @action
+    async login(username: string, password: string) {
+        this.isLogging = true;
+        console.log('logging ..');
+        // const lg = async function() {
+        //     await new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve({ success: true });
+        //             console.log('Logged IN!');
+        //         }, 1000)
+        //     });
+
+        // }();
+
+        await new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ success: true });
+                console.log('Logged IN!');
+            }, 1000)
+        });
+        
+        this.isLogging = false;
+        console.log('logged !!');
+    }
 }
 
-function fetchPostsFromAPI(): Array<*> {
+function fetchPostsFromAPI(): ?Promise<*> {
     const url = "https://jsonplaceholder.typicode.com/posts";
     const url1 = '../dummyData/posts.js'
     // returns an array

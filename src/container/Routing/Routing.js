@@ -6,6 +6,7 @@ import AllPosts from '../AllPosts';
 import CreatePost from '../CreatePost/CreatePost';
 import PostInfo from '../PostInfo';
 import Home from '../Home/Home';
+import Login from '../Login/Login';
 
 export default (): React.Element<*> => {
     return (
@@ -17,6 +18,8 @@ export default (): React.Element<*> => {
                 <Route component={CreatePost} path="/post/new"></Route>
                 <Route component={PostInfo} path="/post/:id"></Route>
             </Switch>
+
+            <Route exact component={Login} path="/login"></Route>
         </div>
     )
 }
