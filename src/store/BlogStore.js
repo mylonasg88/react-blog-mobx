@@ -10,6 +10,7 @@ export default class BlogStore {
     @observable isLogging: boolean = false;
     @observable happened: string = "Nothing happened";
     @observable newPost: TypePost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
+    @observable isLoggedIn: boolean = false;
 
     @action
     createPost() {
@@ -48,26 +49,22 @@ export default class BlogStore {
     async login(username: string, password: string) {
         this.isLogging = true;
         console.log('logging ..');
-        // const lg = async function() {
-        //     await new Promise((resolve, reject) => {
-        //         setTimeout(() => {
-        //             resolve({ success: true });
-        //             console.log('Logged IN!');
-        //         }, 1000)
-        //     });
 
-        // }();
-
-        await new Promise((resolve, reject) => {
+        const result = await new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve({ success: true });
                 console.log('Logged IN!');
+                this.isLoggedIn = true;
             }, 1000)
         });
         
         this.isLogging = false;
         console.log('logged !!');
     }
+
+    // @computed get isLoggedIn(){
+    //     return 
+    // }
 }
 
 function fetchPostsFromAPI(): ?Promise<*> {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observable, action } from 'mobx';
 import { inject, observer } from 'mobx-react';
 // import { asyncComputed } from 'computed-async-mobx';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // import { Button } from 'material-ui-next';
 
 import './Login.css';
@@ -28,9 +28,21 @@ export default class Login extends React.Component {
 
     render() {
         const { blogStore } = this.props;
-        console.log(blogStore.isLogging );
+        console.log(blogStore.isLogging);
+        console.log(this.props.history);
+
+        // if(blogStore.isLoggedIn) this.props.history.push('/');
+
         return (
             <div className='login-container'>
+
+                {blogStore.isLoggedIn ?
+                    (<Redirect
+                        to={{
+                            pathname: "/"
+                        }}
+                    />) : null}
+
                 {blogStore.isLogging ? <h3>Establishing your credentials...</h3> : <h3>Login</h3>}
                 <div className='input-box'>
                     <label for="username" >Username</label>
