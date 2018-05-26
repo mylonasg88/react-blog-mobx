@@ -19,10 +19,8 @@ export default class CreatePost extends React.Component<TypeStateProps, *> {
     };
 
     savePost() {
-        console.log(this.props.blogStore.newPost.id);
-        console.log(this.props.blogStore.newPost.title);
-        console.log(this.props.blogStore.newPost.body);
         this.props.blogStore.createPost();
+
         this.setState({
             redirect: false,
             success: true
@@ -37,11 +35,11 @@ export default class CreatePost extends React.Component<TypeStateProps, *> {
     }
 
     _trackTitle(e: any) {
-        this.props.blogStore.newPost.title = e.target.value;
+        this.props.blogStore.modelPost.title = e.target.value;
     }
 
     _trackContent(e: any) {
-        this.props.blogStore.newPost.body = e.target.value;
+        this.props.blogStore.modelPost.body = e.target.value;
     }
 
     render() {

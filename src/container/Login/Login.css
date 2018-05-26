@@ -1,0 +1,17 @@
+.login-container {
+    border: 1px solid #ccc;
+    width: 300px;
+    margin: 10px auto;
+    height: 170px;
+    padding: 20px;
+    /* box-shadow:  */
+}
+
+.input-box {
+    padding: 10px;
+}
+
+.input-box-submit {
+    /* float: right; */
+    font-size: 14px;
+}

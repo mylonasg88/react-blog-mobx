@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import { observer, inject } from 'mobx-react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import BlogStore from './store/BlogStore'
 import Home from './container/Home/Home';
@@ -31,13 +31,13 @@ class App extends Component<TypeProps> {
     componentWillMount() {
         blogStore.fetchPosts()
             .then((data: Array<TypeData>) => {
-                console.log(data);
+                // console.log(data);
             })
-        console.log();
     }
 
     render() {
-        console.log(this.props)
+        const {history} = this.props;
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -46,6 +46,12 @@ class App extends Component<TypeProps> {
                     <Navigation />
                 </header>
                 <Routing />
+                {!blogStore.isLoggedIn && (history.pathname !== '/login') ?
+                    (<Redirect
+                        to={{
+                            pathname: "/login"
+                        }}
+                    />) : null}
             </div>
         );
     }
