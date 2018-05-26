@@ -13,7 +13,7 @@ export default class AuthComponent extends React.Component {
             <div>
                 AuthComponent
                 {this.props.children}
-                </div>
+            </div>
         )
     }
 }

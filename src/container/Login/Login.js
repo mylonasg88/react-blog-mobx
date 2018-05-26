@@ -28,28 +28,19 @@ export default class Login extends React.Component {
 
     render() {
         const { blogStore } = this.props;
-        console.log(blogStore.isLogging);
-        console.log(this.props.history);
-
-        // if(blogStore.isLoggedIn) this.props.history.push('/');
 
         return (
             <div className='login-container'>
 
-                {blogStore.isLoggedIn ?
-                    (<Redirect
-                        to={{
-                            pathname: "/"
-                        }}
-                    />) : null}
+                {blogStore.isLoggedIn ? (<Redirect to={{pathname: "/"}}/>) : null}
 
                 {blogStore.isLogging ? <h3>Establishing your credentials...</h3> : <h3>Login</h3>}
                 <div className='input-box'>
-                    <label for="username" >Username</label>
+                    <label>Username</label>
                     <input type="text" name="username" onChange={this.onChangeUsername} value={this.username} />
                 </div>
                 <div className='input-box'>
-                    <label for="password">Password</label>
+                    <label>Password</label>
                     <input type="password" name="password" />
                 </div>
                 <div className='input-box-submit'>

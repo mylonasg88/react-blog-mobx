@@ -5,14 +5,15 @@ import { Route, Switch } from 'react-router-dom';
 
 import AllPosts from '../AllPosts';
 import CreatePost from '../CreatePost/CreatePost';
-import PostInfo from '../PostInfo';
+import PostInfo from '../PostInfo/PostInfo';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
+import NotFound from '../ErrorPages/404';
 
 // @inject('blogStore') @observer
 export default class Routing extends React.Component<*> {
     render() {
-        console.log('rendering Routing');
+        // console.log('rendering Routing');
         // this.props.history.push('/login');
         return (
             <div>
@@ -25,6 +26,7 @@ export default class Routing extends React.Component<*> {
                 </Switch>
 
                 <Route exact component={Login} path="/login"></Route>
+                <Route exact component={NotFound} path='/404'></Route>
             </div>
         )
     }

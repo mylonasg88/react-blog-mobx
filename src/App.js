@@ -31,12 +31,13 @@ class App extends Component<TypeProps> {
     componentWillMount() {
         blogStore.fetchPosts()
             .then((data: Array<TypeData>) => {
-                console.log(data);
+                // console.log(data);
             })
-        console.log();
     }
 
     render() {
+        const {history} = this.props;
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -45,7 +46,7 @@ class App extends Component<TypeProps> {
                     <Navigation />
                 </header>
                 <Routing />
-                {!blogStore.isLoggedIn ?
+                {!blogStore.isLoggedIn && (history.pathname !== '/login') ?
                     (<Redirect
                         to={{
                             pathname: "/login"
