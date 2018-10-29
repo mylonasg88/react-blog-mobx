@@ -18,7 +18,6 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
     }
 
     async componentDidMount() {
-        console.log('looking for posts...');
         const blogStore = this.props.blogStore;
 
         // dont fetch posts every time
@@ -43,7 +42,6 @@ export default inject('blogStore')(observer(class AllPosts extends React.Compone
 
     render() {
         const blogStore = this.props.blogStore;
-        console.log('Posts in array:', this.props.blogStore.posts.length);
         const blogList = blogStore.posts.map((post, i) => <li key={post.id}><NavLink to={{ pathname: '/post/' + post.id, pos: i }} > {post.id} {post.title}</NavLink></li >)
         return (
             <div>

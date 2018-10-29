@@ -1,22 +1,24 @@
 // @flow
 import { observable, action, runInAction } from 'mobx'
 import dummyPosts from '../dummyData/posts'
-import type { TypePost } from '../container//PostInfo';
+import type { TypePost } from '../container/PostInfo';
 
 export default class BlogStore {
     @observable users: Array<*> = [];
     @observable posts: Array<*> = [];
     @observable loading: boolean = false;
+    @observable isLogging: boolean = false;
     @observable happened: string = "Nothing happened";
-    @observable newPost: TypePost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
+    @observable modelPost: TypePost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
+    @observable isLoggedIn: boolean = true;
 
     @action
     createPost() {
-        this.posts.push(this.newPost);
-        this.newPost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
-        console.log(this.posts.length);
-        console.log(this.posts[this.posts.length - 1].id);
-        console.log(this.posts[this.posts.length - 1].title);
+        let post = new Post(this.modelPost.title, this.modelPost.content);
+        this.posts.push(post);
+
+        // reset Post Model
+        this.modelPost = { id: parseInt(Math.random() * 1000000), content: "", title: "" };
     }
 
     @action
@@ -34,7 +36,7 @@ export default class BlogStore {
                 this.posts = posts;
                 window.posts = this.posts;
             })
-            console.log(this.posts[0].id);
+
             return posts;
         } catch (error) {
             runInAction(() => {
@@ -42,9 +44,30 @@ export default class BlogStore {
             })
         }
     }
+
+    @action
+    async login(username: string, password: string) {
+        this.isLogging = true;
+        console.log('logging ..');
+
+        const result = await new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ success: true });
+                console.log('Logged IN!');
+                this.isLoggedIn = true;
+            }, 1000)
+        });
+
+        this.isLogging = false;
+        console.log('logged !!');
+    }
+
+    // @computed get isLoggedIn(){
+    //     return 
+    // }
 }
 
-function fetchPostsFromAPI(): Array<*> {
+function fetchPostsFromAPI(): ?Promise<*> {
     const url = "https://jsonplaceholder.typicode.com/posts";
     const url1 = '../dummyData/posts.js'
     // returns an array
@@ -55,6 +78,19 @@ function fetchPostsFromAPI(): Array<*> {
 
     // Mock an API call
     return new Promise((resolve, reject) => {
-        resolve([{ dummy: 'data' }]);
+        resolve([{ id: 2342424, 'title': 'My TItle', content: 'My conent about this post' }]);
     }).then(data => data);
+}
+
+class Post {
+    // { id: parseInt(Math.random() * 1000000), content: "", title: "" };
+    id: number;
+    content: string;
+    title: string;
+
+    constructor(title: string, content: string) {
+        this.id = parseInt(Math.random() * 1000000);
+        this.content = content;
+        this.title = title;
+    }
 }
