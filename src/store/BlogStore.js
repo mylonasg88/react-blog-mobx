@@ -1,7 +1,7 @@
 // @flow
 import { observable, action, runInAction } from 'mobx'
 import dummyPosts from '../dummyData/posts'
-import type { TypePost } from '../container//PostInfo';
+import type { TypePost } from '../container/PostInfo';
 
 export default class BlogStore {
     @observable users: Array<*> = [];

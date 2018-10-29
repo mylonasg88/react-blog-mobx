@@ -27,7 +27,7 @@ describe('Create Post', () => {
         // }).then(data => data);
         const url = "https://jsonplaceholder.typicode.com/posts";
         return fetch(url).then((response) => response.json())
-            .then(data => data.splice(0, 10));
+            .then(data => {data.splice(0, 10)});
 
     }, 6000);
 
