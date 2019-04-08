@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'/>
+    <title>Some Web Page</title>
+    <link rel='stylesheet' href='styles.css'/>
+</head>
+<body>
+<div class='menu-container'>
+    <div class='menu'>
+        <div class='date'>Aug 14, 2016</div>
+        <div class='links'>
+            <div class='signup'>Sign Up</div>      <!-- This is nested now -->
+            <div class='login'>Login</div>         <!-- This one too! -->
+        </div>
+    </div>
+</div>
+
+<div class='header-container'>
+    <div class='header'>
+        <div class='subscribe'>Subscribe &#9662;</div>
+        <div class='logo'><img src='images/awesome-logo.svg'/></div>
+        <div class='social'><img src='images/social-icons.svg'/></div>
+    </div>
+</div>
+
+<div id="like_button_container"></div>
+
+<div class="facebook">
+    <fb:login-button
+            scope="public_profile,email"
+            onlogin="checkLoginState();">
+    </fb:login-button>
+    <div>
+
+        <img id="profile" src=''/>
+        <div class="">
+            <span class="profile-error"></span>
+        </div>
+    </div>
+</div>
+
+<div class="instagram">
+    <a href="https://api.instagram.com/oauth/authorize/?client_id=11f9fad7e57240cdbc43a66b6e4c5174&redirect_uri=https://dauntlesslegends.mvp-experts.com/flex&response_type=token" >Login to Instagram</a>
+</div>
+
+<div class='photo-grid-container'>
+    <div class='photo-grid'>
+        <div class='photo-grid-item first-item'>
+            <img src='images/one.svg'/>
+        </div>
+        <div class='photo-grid-item'>
+            <img src='images/two.svg'/>
+        </div>
+        <div class='photo-grid-item'>
+            <img src='images/three.svg'/>
+        </div>
+        <div class='photo-grid-item'>
+            <img src='images/four.svg'/>
+        </div>
+        <div class='photo-grid-item last-item'>
+            <img src='images/five.svg'/>
+        </div>
+    </div>
+</div>
+
+<script src="./instagram-performance/build/static/js/main.45f87c1a.chunk.js"></script>
+<!--<script src="js/fbLogin.js"></script>-->
+<script src="js/instagram.js"></script>
+
+
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="build/like_button.js"></script>
+<script src="build/App.js"></script>
+
+<!--<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>-->
+
+<div id="root"></div>
+<script>
+
+    // ReactDOM.render(
+    //     <h1>Hello, world!</h1>,
+    //     document.getElementById('root')
+    // );
+
+</script>
+
+<!--<script type="text/babel">-->
+
+    <!--class App extends React.Component {-->
+        <!--render(){-->
+            <!--return (-->
+                <!--<div>-->
+                    <!--<h2>Now it's working!</h2>-->
+                <!--</div>-->
+            <!--)-->
+        <!--}-->
+    <!--}-->
+
+    <!--const domContainer = document.querySelector('#like_button_container');-->
+    <!--ReactDOM.render(-->
+        <!--<App />,-->
+        <!--domContainer-->
+    <!--);-->
+
+<!--</script>-->
+</body>
+</html>
