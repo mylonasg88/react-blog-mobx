@@ -1,0 +1,114 @@
+body {
+    font-family: Helvetica;
+}
+
+.login-module {
+    display: flex;
+    justify-content: center;
+    /*height: 400px;*/
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 500px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.login-container>h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #555555;
+    background-color: transparent;
+}
+
+.social{
+    display: flex;
+    align-content: center;
+    /*height: 60px;*/
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 340px;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    width: 140px;
+    height: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+.social-button>img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.social-button:hover {
+    background-color: cornflowerblue;
+    cursor: pointer;
+}
+
+.instagram:hover {
+    background-color: #F74D4F;
+}
+
+
+.login-form {
+    width: 340px;
+}
+
+.input-field {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.input-field > .label {
+    margin: 6px 0;
+}
+
+.input-field > .label > label {
+    font-size: 14px;
+}
+
+.input-field > .label > a {
+    margin-left: 10px;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+.input-field>input {
+    background-color: #eaeced;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #d6d4d4;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    background-color: #333131;
+    color: white;
+    border-radius: 8px;
+}

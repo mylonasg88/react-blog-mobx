@@ -9,7 +9,10 @@ function parseInstagramUrlForToken() {
         let token = url.substr(url.indexOf(acsTokn) + 14, url.length);
         instToken = token;
         window.localStorage.setItem('instToken', instToken);
-        window.location = document.URL.replace(acsTokn + instToken,'');
+        // Redirect to:
+        // window.location = document.URL.replace(acsTokn + instToken,'');
+        console.log('Redirecting to ' + document.location.origin + '/flex/dashboard');
+        window.location = document.location.origin + '/flex/dashboard.html';
     } else {
         // does token exist in local storage?
         if (window.localStorage.getItem('instToken')) {
